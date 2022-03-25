@@ -30,7 +30,7 @@ function startInterval() {
     }
 
     seconds -= 1;
-    if (seconds == -1) {
+    if (seconds < 0) {
       seconds = 59;
     }
 
@@ -38,12 +38,12 @@ function startInterval() {
       minutes -= 1;
     }
 
-    if (minutes == -1) {
+    if (minutes < 0) {
       hours -= 1;
       minutes = 59;
     }
 
-    if (hours == -1) {
+    if (hours < 0) {
       hours = 0;
     }
   }, 1000);
@@ -72,7 +72,6 @@ pauseButton.addEventListener("click", () => {
   if (paused) {
     clearInterval(timerInterval);
     pauseButton.innerHTML = "Resume";
-
     disableEdit(false);
   } else {
     startInterval();
@@ -117,7 +116,7 @@ function setInitialValues() {
 
 hoursInput.addEventListener("input", () => {
   hours = parseInt(hoursInput.value);
-  hoursInput.value = formatNumber(hoursInput, 99);
+  hoursInput.value = formatNumber(hours, 99);
   setInitialValues();
 });
 
