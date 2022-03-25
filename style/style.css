@@ -26,7 +26,8 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 0;
+  -webkit-transition: color 0.3s linear;
+  transition: color 0.3s linear;
 }
 
 .container .center #timerInput input::-webkit-outer-spin-button,
@@ -35,35 +36,8 @@ body {
   margin: 0;
 }
 
-.container .center #timerInput.start {
-  -webkit-animation-name: start-border;
-          animation-name: start-border;
-  -webkit-animation-duration: 200ms;
-          animation-duration: 200ms;
-  -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
-}
-
-@-webkit-keyframes start-border {
-  0% {
-    border: 20px solid white;
-    padding: 0px;
-  }
-  100% {
-    border: 30px solid rgba(255, 255, 255, 0.068);
-    padding: 100px;
-  }
-}
-
-@keyframes start-border {
-  0% {
-    border: 20px solid white;
-    padding: 0px;
-  }
-  100% {
-    border: 30px solid rgba(255, 255, 255, 0.068);
-    padding: 100px;
-  }
+.container .center #timerInput.start * {
+  color: #18f1a9;
 }
 
 .container .center #timerInput input {
@@ -83,8 +57,6 @@ body {
   font-size: 100px;
   padding: 5px;
   margin: 0;
-  -webkit-transition: color 0.3s linear;
-  transition: color 0.3s linear;
 }
 
 .container .buttons {

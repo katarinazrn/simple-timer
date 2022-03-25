@@ -55,7 +55,7 @@ startButton.addEventListener("click", () => {
   timerInput.classList.add("start");
   setTimeout(() => {
     timerInput.classList.remove("start");
-  }, 1000);
+  }, 300);
 
   seconds -= 1;
 

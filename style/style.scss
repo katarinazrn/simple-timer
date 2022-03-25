@@ -36,24 +36,12 @@ body {
         -webkit-appearance: none;
         margin: 0;
       }
-
-      padding: 0;
+      
+      transition: color 0.3s linear;
 
       &.start {
-        animation-name: start-border;
-        animation-duration: 200ms;
-        animation-timing-function: linear;
-      }
-
-      @keyframes start-border {
-        0% {
-          border: 20px solid rgb(255, 255, 255);
-          padding: 0px;
-        }
-
-        100% {
-          border: 30px solid rgba(255, 255, 255, 0.068);
-          padding: 100px;
+        *{
+          color: $green;
         }
       }
 
@@ -77,8 +65,6 @@ body {
       font-size: 100px;
       padding: 5px;
       margin: 0;
-
-      transition: color 0.3s linear;
     }
   }
 
