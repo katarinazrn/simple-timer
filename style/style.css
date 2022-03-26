@@ -40,6 +40,17 @@ body {
   color: #18f1a9;
 }
 
+.container .center #timerInput.ended {
+  -webkit-animation-name: blink;
+          animation-name: blink;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
 .container .center #timerInput input {
   -moz-appearance: textfield;
   color: #f0f0f0;
@@ -52,11 +63,35 @@ body {
   outline: none;
 }
 
-.container .center span {
+.container .center #timerInput span {
   color: #f0f0f0;
   font-size: 100px;
   padding: 5px;
   margin: 0;
+}
+
+@-webkit-keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .container .buttons {

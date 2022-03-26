@@ -21,12 +21,14 @@ function startInterval() {
   disableEdit();
 
   timerInterval = setInterval(() => {
-    hoursInput.value = formatNumber(hours, 99);
-    minutesInput.value = formatNumber(minutes, 59);
-    secondsInput.value = formatNumber(seconds, 59);
+    setValues();
 
     if (hours == 0 && minutes == 0 && seconds == 0) {
+      started = false;
       clearInterval(timerInterval);
+      timerInput.classList.add('ended');
+      pauseButton.style.display = "none";
+      resetButton.style.display = "block";
     }
 
     seconds -= 1;
@@ -51,6 +53,7 @@ function startInterval() {
 
 startButton.addEventListener("click", () => {
   started = true;
+  timerInput.classList.remove('ended');
 
   timerInput.classList.add("start");
   setTimeout(() => {
@@ -68,6 +71,7 @@ startButton.addEventListener("click", () => {
 
 pauseButton.addEventListener("click", () => {
   paused = !paused;
+  timerInput.classList.remove('ended');
 
   if (paused) {
     clearInterval(timerInterval);
@@ -83,6 +87,8 @@ pauseButton.addEventListener("click", () => {
 resetButton.addEventListener("click", () => {
   clearInterval(timerInterval);
 
+  timerInput.classList.remove('ended');
+
   hours = initialHours;
   minutes = initialMinutes;
   seconds = initialSeconds;
@@ -92,42 +98,30 @@ resetButton.addEventListener("click", () => {
   started = false;
   disableEdit(false);
 
-  hoursInput.value = formatNumber(hours, 99);
-  minutesInput.value = formatNumber(minutes, 59);
-  secondsInput.value = formatNumber(seconds, 59);
+  console.log(hours,minutes,seconds)
+  setValues();
 
   pauseButton.style.display = "none";
   resetButton.style.display = "none";
   startButton.style.display = "block";
 });
 
-function disableEdit(value = true) {
-  hoursInput.disabled = value;
-  minutesInput.disabled = value;
-  secondsInput.disabled = value;
-}
-
-function setInitialValues() {
-  if (!started) {
-    initialHours = hours;
-    initialMinutes = minutes;
-    initialSeconds = seconds;
-  }
-}
-
 hoursInput.addEventListener("input", () => {
+  timerInput.classList.remove('ended');
   hours = parseInt(hoursInput.value);
   hoursInput.value = formatNumber(hours, 99);
   setInitialValues();
 });
 
 minutesInput.addEventListener("input", () => {
+  timerInput.classList.remove('ended');
   minutes = parseInt(minutesInput.value);
   minutesInput.value = formatNumber(minutes, 59);
   setInitialValues();
 });
 
 secondsInput.addEventListener("input", () => {
+  timerInput.classList.remove('ended');
   seconds = parseInt(secondsInput.value);
   secondsInput.value = formatNumber(seconds, 59);
   setInitialValues();
@@ -148,4 +142,24 @@ function formatNumber(number, max) {
   }
 
   return number;
+}
+
+function setValues() {
+  hoursInput.value = formatNumber(hours, 99);
+  minutesInput.value = formatNumber(minutes, 59);
+  secondsInput.value = formatNumber(seconds, 59);
+}
+
+function disableEdit(value = true) {
+  hoursInput.disabled = value;
+  minutesInput.disabled = value;
+  secondsInput.disabled = value;
+}
+
+function setInitialValues() {
+  if (!started) {
+    initialHours = hours;
+    initialMinutes = minutes;
+    initialSeconds = seconds;
+  }
 }
