@@ -101,4 +101,24 @@ body {
   background-color: #f89286;
   display: none;
 }
+
+@media (max-width: 600px) {
+  .container .center #timerInput {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+  .container .center #timerInput input {
+    font-size: 50px;
+    padding: 0px;
+    width: 60px;
+  }
+  .container .center #timerInput span {
+    font-size: 50px;
+    padding: 0;
+  }
+  .container .buttons button {
+    font-size: 20px;
+  }
+}
 /*# sourceMappingURL=style.css.map */

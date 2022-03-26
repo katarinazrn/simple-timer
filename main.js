@@ -88,6 +88,7 @@ resetButton.addEventListener("click", () => {
   seconds = initialSeconds;
 
   paused = false;
+  pauseButton.innerHTML = "Pause";
   started = false;
   disableEdit(false);
 
